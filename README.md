@@ -1,1 +1,1 @@
-# ColorMatch
+# A relatively simple website that takes an input of RGB or Hex color codes, and finds the exact complimentary color 
