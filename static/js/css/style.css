@@ -1,8 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:700);
+@import url(https://fonts.googleapis.com/css?family=Barriecito:400);
 body{
   background-color: rgb(0,0,0);
   text-align: center;
-  padding: 40px 0 0 0; 
+  padding: 40px 0 0 0;
+  color: #FFFFFF; 
 }
 fieldset{
   border: none;
@@ -31,4 +33,22 @@ label[for=b], output[for=b]{
   min-width: 4.5em;
   font-size: 3em;
   background: rgba(255,255,255,.3);
+}
+
+h1{
+  font-family: "Barriecito", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 115px;
+  color: #FFFFFF;
+}
+
+#FirstText{
+  font-size: 40px;
+  font-family: 'trebuchet MS', sans-serif;
+}
+
+p{
+  font-size: 27px;
+  font-family: 'trebuchet MS', sans-serif;
 }

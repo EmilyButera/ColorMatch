@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/static/js/css/style.css">
 </head>
 <body>
+    <h1>Color Match</h1>
+    <p id="FirstText">Drag the sliders to choose your RGB color!</p>
     <fieldset>
         <label for="r">R</label>
         <input type="range" min="0" max="255" id="r" step="1" value="0">
@@ -23,7 +25,12 @@
         <input type="range" min="0" max="255" id="b" step="1" value="0">
         <output for="b" id="b_out">0</output>
     </fieldset>  
-
+    <br>
+    <p>Your color</p>
     <output id="hex">#000000</output>
+    <div style="height: 10px;"></div>
+    <br>
+    <p>Complimentary color</p>
+    <output id="complimentary">#FFFFFF</output>
 </body>
 </html>
