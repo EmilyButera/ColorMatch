@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/Complimentary')
+@app.route('/complimentary')
 def complimentary():
     return render_template("comp.html")
 
@@ -21,6 +21,10 @@ def tetric():
 @app.route('/hexadic')
 def hexadic():
     return render_template("hex.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
