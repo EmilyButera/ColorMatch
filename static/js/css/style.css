@@ -1,57 +1,78 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:700);
 @import url(https://fonts.googleapis.com/css?family=Barriecito:400);
+
 body{
-  background-color: rgb(0,0,0);
+  background-image: url('./../../images/back1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  overflow: scroll;
+}
+
+@layer demo {
+  .highlighted-text-shadow {
+    text-shadow:
+      /* regular text-shadow */
+      0 .15ch 15px var(--shadow),
+      /* text-shadow highlight */
+      0 -2px 0 var(--highlight);
+  }
+}
+
+.desc{
+  width: 700px;
+  height: auto;
+  padding: 10px;
+  border: 5px solid #ffffff;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin: auto;
   text-align: center;
-  color: #FFFFFF; 
-}
-fieldset{
-  border: none;
-}
-output{
-  display: inline-block;
-  min-width: 2.5em;
-}
-label, output{
-  padding: 2px 9px;
-  border-radius: 3px;
-  font-family: 'Roboto', sans-serif;
-  color: #000;
-  font-size: 1.1em;
-}
-label[for=r], output[for=r]{
-  background-color: #f00;
-}
-label[for=g], output[for=g]{
-  background-color: #0f0;
-}
-label[for=b], output[for=b]{
-  background-color: #00f;
-}
-#hex{
-  min-width: 4.5em;
-  font-size: 3em;
-  background: rgba(255,255,255,.3);
+  font-family: 'trebuchet ms', sans-serif;
+  font-size: 30px;
+  color: #78DFF4;
+  margin-top: 80px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-h1{
-  font-family: "Barriecito", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 115px;
-  color: #FFFFFF;
-}
 
-#FirstText{
-  font-size: 40px;
-  font-family: 'trebuchet MS', sans-serif;
-}
+@layer demo.support {
+  :root {
+    --hue: 212; /* change me */
+    --bg: oklch(35% .3 var(--hue));
+    --text: oklch(85% .1 var(--hue));
+    --shadow: oklch(25% .2 var(--hue));
+    --highlight: oklch(98% .05 var(--hue));
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
 
-p{
-  font-size: 27px;
-  font-family: 'trebuchet MS', sans-serif;
+  html {
+    color: var(--text);
+  }
+
+  
+  h1 {
+    font-family: "Barriecito", system-ui;
+    text-align: center;
+    font-size: 15vi;
+    letter-spacing: -.15ch;
+    line-height: .75;
+    margin-top: 110px;
+  }
+  
+  small {
+    max-inline-size: 30ch;
+  }
+
+
 }
 .topnav {
+  text-align: center;
+  font-family: 'trebuchet MS', sans-serif;
   overflow: hidden;
   background-color: #333;
 }

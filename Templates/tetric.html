@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Triadic</title>
-    <script src="/static/js/tri.js"></script>
-    <link rel="stylesheet" href="/static/js/css/tri.css">
+    <title>Tetric</title>
+    <script src="/static/js/tetric.js"></script>
+    <link rel="stylesheet" href="/static/js/css/tetric.css">
 </head>
 <body>
     <div class="topnav">
         <a href="/complimentary">Complimentary</a>
-        <a class="active" href="/triadic">Triadic</a>
-        <a href="/tetric">Tetric</a>
+        <a href="/triadic">Triadic</a>
+        <a class="active" href="/tetric">Tetric</a>
         <a href="/hexadic">Hexadic</a>
     </div>
-    <h1>Triadic</h1>
-    <p id="FirstText">Drag the sliders to choose your RGB color!</p>
+    <h1>Tetric</h1>
+     <p id="FirstText">Drag the sliders to choose your RGB color!</p>
     <fieldset>
         <label for="r">R</label>
         <input type="range" min="0" max="255" id="r" step="1" value="0">
@@ -34,10 +34,11 @@
     <p>Your color</p>
     <output id="hex">#000000</output>
     <div style="height: 15px;"></div>
-    <p>Triadic colors</p>
-    <div style="display: flex; gap: 20px; justify-content: center;">
-        <output id="triad1">#000000</output>
-        <output id="triad2">#000000</output>
+    <p>Tetric Colors</p>
+    <div id="tetric-container">
+        <output id="tetric1">#000000</output>
+        <output id="tetric2">#000000</output>
+        <output id="tetric3">#000000</output>
     </div>
 </body>
 </html>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Triadic</title>
-    <script src="/static/js/tri.js"></script>
-    <link rel="stylesheet" href="/static/js/css/tri.css">
+    <title>ColorMatch</title>
+    <script src="/static/js/hex.js"></script>
+    <link rel="stylesheet" href="/static/js/css/hex.css">
 </head>
 <body>
     <div class="topnav">
         <a href="/complimentary">Complimentary</a>
-        <a class="active" href="/triadic">Triadic</a>
+        <a href="/triadic">Triadic</a>
         <a href="/tetric">Tetric</a>
-        <a href="/hexadic">Hexadic</a>
+        <a class="active" href="/hexadic">Hexadic</a>
     </div>
-    <h1>Triadic</h1>
+    <h1>Hexadic</h1>
     <p id="FirstText">Drag the sliders to choose your RGB color!</p>
     <fieldset>
         <label for="r">R</label>
@@ -33,11 +33,13 @@
     </fieldset>  
     <p>Your color</p>
     <output id="hex">#000000</output>
-    <div style="height: 15px;"></div>
-    <p>Triadic colors</p>
-    <div style="display: flex; gap: 20px; justify-content: center;">
-        <output id="triad1">#000000</output>
-        <output id="triad2">#000000</output>
+    <div style="height: 10px;"></div>
+    <div id="hexadic-container">
+        <output id="hexadic1">#000000</output>
+        <output id="hexadic2">#000000</output>
+        <output id="hexadic3">#000000</output>
+        <output id="hexadic4">#000000</output>
+        <output id="hexadic5">#000000</output>
     </div>
 </body>
 </html>
