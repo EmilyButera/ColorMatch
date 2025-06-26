@@ -26,6 +26,10 @@ def hexadic():
 def about():
     return render_template("about.html")
 
+@app.route('/about/site')
+def aboutSite():
+    return render_template("abt.html")
+
 @app.route('/random')
 def random():
     return render_template("rand.html")
