@@ -1,4 +1,7 @@
-# A relatively simple website that takes an input of RGB or Hex color codes, and finds the exact complementary color 
+# Color Match 
+A relatively simple website that takes an input of RGB or Hex color codes, and finds the exact complementary color
+
+---
 
 Due to the fact that the website uses Flask, it cannot be hosted on a github pages site.
 
