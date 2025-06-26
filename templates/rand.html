@@ -14,9 +14,19 @@
         <a class="active" href="/random">Random</a>
     </div>
     <h1>Random Color Generator</h1>
-    <p id="FirstText">Generate a random color</p>  
+    <p id="FirstText">Generate a random color</p><br>
+    <label for="color-count">How many colors?</label>
+    <select id="color-count">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br>
+    <br>
     <button id="generate-btn">Generate Random Color</button>
     <p>Your color</p>
-    <div id="random-color-display" style="margin:20px auto;width:200px;height:60px;line-height:60px;text-align:center;font-size:1.2em;font-weight:bold;border-radius:10px;color:#fff;background:#222;">#000000</div>
+    <div id="random-color-display" style="display:flex;gap:16px;justify-content:center;"></div>
 </body>
 </html>
