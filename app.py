@@ -26,5 +26,9 @@ def hexadic():
 def about():
     return render_template("about.html")
 
+@app.route('/random')
+def random():
+    return render_template("rand.html")
+
 if __name__ == '__main__':
     app.run(debug=True)

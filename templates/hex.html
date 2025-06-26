@@ -11,6 +11,7 @@
         <a href="/triadic">Triadic</a>
         <a href="/tetric">Tetric</a>
         <a class="active" href="/hexadic">Hexadic</a>
+        <a href="/random">Random</a>
     </div>
     <h1>Hexadic</h1>
     <p id="FirstText">Drag the sliders to choose your RGB color!</p>
@@ -31,9 +32,14 @@
         <input type="range" min="0" max="255" id="b" step="1" value="0">
         <output for="b" id="b_out">0</output>
     </fieldset>  
+    <div style="margin: 10px 0;">
+        <label for="hex_code">Hex: </label>
+        <input type="text" id="hex_code" maxlength="7" placeholder="#000000">
+    </div>
     <p>Your color</p>
     <output id="hex">#000000</output>
     <div style="height: 10px;"></div>
+    <p>Hexadic Colors</p>
     <div id="hexadic-container">
         <output id="hexadic1">#000000</output>
         <output id="hexadic2">#000000</output>

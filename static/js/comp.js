@@ -8,16 +8,35 @@ document.addEventListener('DOMContentLoaded', function() {
         b_out = document.querySelector('#b_out'),
         hex_out = document.querySelector('#hex');
     var complimentary_out = document.querySelector('#complimentary');
+    var hex_input = document.querySelector('#hex_code');
+
+    function pad(n){
+      return (n.length<2) ? "0"+n : n;
+    }
+
+    function rgbToHex(r, g, b) {
+      return "#" + pad(r.toString(16)) + pad(g.toString(16)) + pad(b.toString(16));
+    }
+
+    function hexToRgb(hex) {
+      hex = hex.replace(/^#/, '');
+      if (hex.length === 3) {
+        hex = hex.split('').map(x => x + x).join('');
+      }
+      if (hex.length !== 6) return null;
+      var num = parseInt(hex, 16);
+      return [
+        (num >> 16) & 255,
+        (num >> 8) & 255,
+        num & 255
+      ];
+    }
 
     function setColor(){
       var rVal = parseInt(r.value, 10),
           gVal = parseInt(g.value, 10),
           bVal = parseInt(b.value, 10);
-      var r_hex = rVal.toString(16),
-          g_hex = gVal.toString(16),
-          b_hex = bVal.toString(16),
-          hex = "#" + pad(r_hex) + pad(g_hex) + pad(b_hex);
-      // body.style.backgroundColor = hex; // Keep background black
+      var hex = rgbToHex(rVal, gVal, bVal);
       hex_out.textContent = hex;
       hex_out.style.backgroundColor = hex;
       hex_out.style.display = "inline-block";
@@ -34,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var compR = 255 - rVal,
           compG = 255 - gVal,
           compB = 255 - bVal,
-          compHex = "#" + pad(compR.toString(16)) + pad(compG.toString(16)) + pad(compB.toString(16));
+          compHex = rgbToHex(compR, compG, compB);
       complimentary_out.textContent = compHex;
       complimentary_out.style.backgroundColor = compHex;
       complimentary_out.style.display = "inline-block";
@@ -51,18 +70,28 @@ document.addEventListener('DOMContentLoaded', function() {
       r_out.textContent = r.value;
       g_out.textContent = g.value;
       b_out.textContent = b.value;
+
+      // Update hex input field if needed
+      if (hex_input !== document.activeElement) {
+        hex_input.value = hex;
+      }
     }
 
-    function pad(n){
-      return (n.length<2) ? "0"+n : n;
-    }
-
-    r.addEventListener('change', setColor, false);
+    // When sliders change, update everything
     r.addEventListener('input', setColor, false);
-    g.addEventListener('change', setColor, false);
     g.addEventListener('input', setColor, false);
-    b.addEventListener('change', setColor, false);
     b.addEventListener('input', setColor, false);
+
+    // When hex input changes, update sliders and color
+    hex_input.addEventListener('input', function() {
+      var rgb = hexToRgb(hex_input.value.trim());
+      if (rgb) {
+        r.value = rgb[0];
+        g.value = rgb[1];
+        b.value = rgb[2];
+        setColor();
+      }
+    });
 
     // Initialize on page load
     setColor();
