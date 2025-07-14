@@ -11,3 +11,6 @@ In order to run the site, please follow the steps below:
 - Visit http://127.0.0.1:5000 in your browser
 
 And enjoy!
+
+---
+This project was made for Summer of Making and [![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
