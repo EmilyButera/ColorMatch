@@ -37,15 +37,5 @@ def random():
 # Only run Flask's built-in server in local development
 if __name__ == '__main__':
     import os
-    import subprocess
-    port = int(os.environ.get('PORT', 8000))
-    if port == 5000:
-        # Kill any process using port 5000 (Windows PowerShell)
-        try:
-            subprocess.run(
-                'powershell.exe -Command "Get-Process -Id (Get-NetTCPConnection -LocalPort 5000).OwningProcess | Stop-Process"',
-                check=True
-            )
-        except Exception as e:
-            print(f"Could not kill process on port 5000: {e}")
+    port = int(os.environ.get('PORT', 33705))
     app.run(debug=True, host='0.0.0.0', port=port)
