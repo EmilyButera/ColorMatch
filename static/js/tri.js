@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
         r_out = document.querySelector('#r_out'),
         g_out = document.querySelector('#g_out'),
         b_out = document.querySelector('#b_out'),
-        hex_out = document.querySelector('#hex');
+        hex_out = document.querySelector('#hex'),
+        hex_input = document.querySelector('#hex_code');
     var triadic1 = document.querySelector('#triad1');
     var triadic2 = document.querySelector('#triad2');
 
@@ -13,10 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var rVal = parseInt(r.value, 10),
           gVal = parseInt(g.value, 10),
           bVal = parseInt(b.value, 10);
-      var r_hex = rVal.toString(16),
-          g_hex = gVal.toString(16),
-          b_hex = bVal.toString(16),
-          hex = "#" + pad(r_hex) + pad(g_hex) + pad(b_hex);
+      var hex = rgbToHex(rVal, gVal, bVal);
       hex_out.textContent = hex;
       hex_out.style.backgroundColor = hex;
       r_out.textContent = r.value;
@@ -36,10 +34,16 @@ document.addEventListener('DOMContentLoaded', function() {
       triadic1.style.backgroundColor = tri1hex;
       triadic2.textContent = tri2hex;
       triadic2.style.backgroundColor = tri2hex;
+
+      // Update hex input field if needed
+      if (document.activeElement !== hex_input) {
+        hex_input.value = hex;
+      }
     }
 
     function pad(n){
-      return (n.length<2) ? "0"+n : n;
+      n = n.toString(16);
+      return n.length < 2 ? "0" + n : n;
     }
 
     // RGB to HSL conversion
@@ -87,15 +91,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function rgbToHex(r, g, b) {
-      return "#" + pad(r.toString(16)) + pad(g.toString(16)) + pad(b.toString(16));
+      return "#" + pad(r) + pad(g) + pad(b);
+    }
+    function hexToRgb(hex) {
+      hex = hex.replace(/^#/, '');
+      if (hex.length === 3) {
+        hex = hex.split('').map(x => x + x).join('');
+      }
+      if (!/^([0-9a-fA-F]{6})$/.test(hex)) return null;
+      var num = parseInt(hex, 16);
+      return [
+        (num >> 16) & 255,
+        (num >> 8) & 255,
+        num & 255
+      ];
     }
 
-    r.addEventListener('change', setColor, false);
     r.addEventListener('input', setColor, false);
-    g.addEventListener('change', setColor, false);
     g.addEventListener('input', setColor, false);
-    b.addEventListener('change', setColor, false);
     b.addEventListener('input', setColor, false);
+
+    // When hex input changes, update sliders and color
+    hex_input.addEventListener('input', function() {
+      var val = hex_input.value.trim();
+      if (!val.startsWith('#')) val = '#' + val;
+      var rgb = hexToRgb(val);
+      if (rgb) {
+        r.value = rgb[0];
+        g.value = rgb[1];
+        b.value = rgb[2];
+        setColor();
+      }
+    });
 
     // Initialize on page load
     setColor();

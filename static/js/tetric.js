@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         r_out = document.querySelector('#r_out'),
         g_out = document.querySelector('#g_out'),
         b_out = document.querySelector('#b_out'),
-        hex_out = document.querySelector('#hex');
+        hex_out = document.querySelector('#hex'),
+        hex_input = document.querySelector('#hex_code');
     var tetric1_out = document.querySelector('#tetric1');
     var tetric2_out = document.querySelector('#tetric2');
     var tetric3_out = document.querySelector('#tetric3');
@@ -55,8 +56,27 @@ document.addEventListener('DOMContentLoaded', function() {
         return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
 
+    function pad(n){
+      n = n.toString(16);
+      return n.length < 2 ? "0" + n : n;
+    }
+
     function rgbToHex(r, g, b) {
-        return "#" + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+      return "#" + pad(r) + pad(g) + pad(b);
+    }
+
+    function hexToRgb(hex) {
+      hex = hex.replace(/^#/, '');
+      if (hex.length === 3) {
+        hex = hex.split('').map(x => x + x).join('');
+      }
+      if (!/^([0-9a-fA-F]{6})$/.test(hex)) return null;
+      var num = parseInt(hex, 16);
+      return [
+        (num >> 16) & 255,
+        (num >> 8) & 255,
+        num & 255
+      ];
     }
 
     function setColor(){
@@ -94,14 +114,29 @@ document.addEventListener('DOMContentLoaded', function() {
       r_out.textContent = r.value;
       g_out.textContent = g.value;
       b_out.textContent = b.value;
+
+      // Update hex input field if needed
+      if (document.activeElement !== hex_input) {
+        hex_input.value = hex;
+      }
     }
 
-    r.addEventListener('change', setColor, false);
     r.addEventListener('input', setColor, false);
-    g.addEventListener('change', setColor, false);
     g.addEventListener('input', setColor, false);
-    b.addEventListener('change', setColor, false);
     b.addEventListener('input', setColor, false);
+
+    // When hex input changes, update sliders and color
+    hex_input.addEventListener('input', function() {
+      var val = hex_input.value.trim();
+      if (!val.startsWith('#')) val = '#' + val;
+      var rgb = hexToRgb(val);
+      if (rgb) {
+        r.value = rgb[0];
+        g.value = rgb[1];
+        b.value = rgb[2];
+        setColor();
+      }
+    });
 
     // Initialize on page load
     setColor();
